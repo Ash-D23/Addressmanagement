@@ -30,12 +30,15 @@ const AddressProvider = ({ children }) => {
         try{
           const res = await axios.get('https://6219df4381d4074e85b37570.mockapi.io/address/addresses');
           setaddressList(res.data)
+          setisloading(false)
         }catch(err){
           console.log(err)
+          setisloading(false)
         }
       }
     
       useEffect(() => {
+        setisloading(true)
         getalladdress()
       }, [])
 

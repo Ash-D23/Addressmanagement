@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
 import AddressList from '../AddressList/AddressList';
 import AddressModal from '../AddressModal/AddressModal';
-import Loader from '../Loader/Loader';
 import { useAddress } from '../../Context/AddressContext/AddressContext';
 
 function Addressmanagement() {
   const [showmodal, setshowmodal] = useState(false)
-  const { isloading, onaddaddress } = useAddress()
+  const { onaddaddress } = useAddress()
 
   return (
     <div class="container--80 padding--medium">
@@ -14,7 +13,6 @@ function Addressmanagement() {
       <div class="container__flex--center margin-tb--medium">
         <button class="btn btn--secondary btn--icon" onClick={()=>setshowmodal(true)}><span><i class="fas fa-plus"></i></span>Add New Address</button>
       </div>
-      { isloading && <Loader />}
       <AddressList />
       <AddressModal onsubmit={onaddaddress} showmodal={showmodal} closeModal={()=>setshowmodal(false)} />
     </div>
